@@ -143,3 +143,155 @@ git commit -m  "first working code in webapp"
 [ashu@ci-sever webapp]$ 
 ```
 
+### checking commit history 
+
+```
+[ashu@ci-sever webapp]$ git status
+On branch master
+nothing to commit, working tree clean
+[ashu@ci-sever webapp]$ 
+[ashu@ci-sever webapp]$ git log
+commit e9c831d2560f96f1dc5d84f53929c78c6d010589 (HEAD -> master)
+Author: redashu <ashutoshh@linux.com>
+Date:   Mon Jan 15 17:40:25 2024 +0000
+
+    first working code in webapp
+```
+
+### modified in existing data and untracked file data
+
+```
+[ashu@ci-sever webapp]$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ashu.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+=====>>>
+
+[ashu@ci-sever webapp]$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ashu.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test.html
+
+```
+
+### >>
+
+```
+git add  .
+[ashu@ci-sever webapp]$ 
+[ashu@ci-sever webapp]$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   ashu.html
+        new file:   test.html
+
+
+
+[ashu@ci-sever webapp]$ git commit  -m "second working code"
+[master 7ffd216] second working code
+ 2 files changed, 14 insertions(+)
+ create mode 100644 test.html
+[ashu@ci-sever webapp]$ 
+```
+
+### git rollback 
+
+<img src="roll.png">
+
+### using checkout 
+
+```
+[ashu@ci-sever webapp]$ git log
+commit 7ffd216c26d41be3d0d1994be9f5d68e44699047 (HEAD -> master)
+Author: redashu <ashutoshh@linux.com>
+Date:   Mon Jan 15 18:11:25 2024 +0000
+
+    second working code
+
+commit e9c831d2560f96f1dc5d84f53929c78c6d010589
+Author: redashu <ashutoshh@linux.com>
+Date:   Mon Jan 15 17:40:25 2024 +0000
+
+    first working code in webapp
+
+====>>>
+
+[ashu@ci-sever webapp]$ git checkout  e9c831d2560f96f1dc5d84f53929c78c6d010589
+Note: switching to 'e9c831d2560f96f1dc5d84f53929c78c6d010589'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at e9c831d first working code in webapp
+[ashu@ci-sever webapp]$ ls
+ashu.html
+```
+
+
+### going forward 
+
+```
+[ashu@ci-sever webapp]$ git log
+commit e9c831d2560f96f1dc5d84f53929c78c6d010589 (HEAD)
+Author: redashu <ashutoshh@linux.com>
+Date:   Mon Jan 15 17:40:25 2024 +0000
+
+    first working code in webapp
+
+
+
+[ashu@ci-sever webapp]$ 
+[ashu@ci-sever webapp]$ 
+[ashu@ci-sever webapp]$ git reflog
+e9c831d (HEAD) HEAD@{0}: checkout: moving from master to e9c831d2560f96f1dc5d84f53929c78c6d010589
+7ffd216 (master) HEAD@{1}: commit: second working code
+e9c831d (HEAD) HEAD@{2}: commit (initial): first working code in webapp
+[ashu@ci-sever webapp]$
+
+===>>
+
+[ashu@ci-sever webapp]$ git checkout  7ffd216
+Previous HEAD position was e9c831d first working code in webapp
+HEAD is now at 7ffd216 second working code
+[ashu@ci-sever webapp]$ ls
+ashu.html  test.html
+
+===>>
+
+[ashu@ci-sever webapp]$ git log
+commit 7ffd216c26d41be3d0d1994be9f5d68e44699047 (HEAD, master)
+Author: redashu <ashutoshh@linux.com>
+Date:   Mon Jan 15 18:11:25 2024 +0000
+
+    second working code
+
+commit e9c831d2560f96f1dc5d84f53929c78c6d010589
+Author: redashu <ashutoshh@linux.com>
+Date:   Mon Jan 15 17:40:25 2024 +0000
+
+    first working code in webapp
+```
