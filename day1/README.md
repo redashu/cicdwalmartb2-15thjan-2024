@@ -86,7 +86,7 @@ java  python  scripts  webapp
 
 ### doing git init
 
-<img src="gitint.png">
+<img src="gitinit.png">
 
 
 
