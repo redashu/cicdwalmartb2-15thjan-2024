@@ -316,3 +316,80 @@ branch 'master' set up to track 'origin/master'.
   master
 [ashu@ci-sever webapp]$ 
 ```
+
+### new github policy to use git repo 
+
+<img src="new.png">
+
+### step 1 -- create git repo in github 
+
+### step 2 - in local git server create ssh key
+
+```
+[ashu@ci-sever webapp]$ ssh-keygen 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ashu/.ssh/id_rsa): 
+Created directory '/home/ashu/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/ashu/.ssh/id_rsa.
+Your public key has been saved in /home/ashu/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:oGc8dEu/XMkpClRVRB8vVwKc/i8bczlo5zdG/6P4Qzs ashu@ci-sever
+The key's randomart image is:
++---[RSA 2048]----+
+|        ...==oo .|
+|       .    o. +.|
+|      + o  .  o o|
+|     = + o ..o o |
+|    . * S o =.   |
+|     o o o + .o..|
+|        . o .o==o|
+|            oE+B=|
+|           ..o*+*|
++----[SHA256]-----+
+```
+
+### now add public key to github account 
+
+### step 3 -- clone git repo to local git server using ssh url
+
+```
+git clone git@github.com:redashu/ashu-webapp-test1.git
+Cloning into 'ashu-webapp-test1'...
+The authenticity of host 'github.com (140.82.113.4)' can't be established.
+ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.
+ECDSA key fingerprint is MD5:7b:99:81:1e:4c:91:a5:0d:5a:2e:2e:80:13:3f:24:ca.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,140.82.113.4' (ECDSA) to the list of known hosts.
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+[ashu@ci-sever ashu-pipelines]$ ls
+ashu-webapp-test1  java  my-tasks  python  scripts  webapp
+[ashu@ci-sever ashu-pipelines]$ 
+```
+
+### remainig process is same -- add / commit / push 
+
+```
+[ashu@ci-sever ashu-pipelines]$ cd ashu-webapp-test1/
+[ashu@ci-sever ashu-webapp-test1]$ ls
+okey.txt  README.md
+[ashu@ci-sever ashu-webapp-test1]$ git add .
+[ashu@ci-sever ashu-webapp-test1]$ git commit  -m "adding test text file"
+[master 115820c] adding test text file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 okey.txt
+[ashu@ci-sever ashu-webapp-test1]$ git push 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 295 bytes | 295.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:redashu/ashu-webapp-test1.git
+   397064c..115820c  master -> master
+```
+
