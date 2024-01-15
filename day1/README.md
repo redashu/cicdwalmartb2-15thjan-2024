@@ -88,6 +88,58 @@ java  python  scripts  webapp
 
 <img src="gitinit.png">
 
+### add using git -- start tracking data
 
+```
+[ashu@ci-sever webapp]$ ls
+ashu.html
+[ashu@ci-sever webapp]$ git add ashu.html 
+[ashu@ci-sever webapp]$ git status
+On branch master
 
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   ashu.html
+
+```
+
+### in new git version we need to specify some details 
+
+```
+[ashu@ci-sever webapp]$ git commit -m  "first working code in webapp"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'ashu@ci-sever.(none)')
+
+====>>>
+
+[ashu@ci-sever webapp]$ 
+[ashu@ci-sever webapp]$ 
+[ashu@ci-sever webapp]$  git config --global user.email ashutoshh@linux.com
+[ashu@ci-sever webapp]$ git config --global user.name   redashu
+[ashu@ci-sever webapp]$
+
+```
+
+### now we can commit 
+
+```
+git commit -m  "first working code in webapp"
+[master (root-commit) e9c831d] first working code in webapp
+ 1 file changed, 12 insertions(+)
+ create mode 100644 ashu.html
+[ashu@ci-sever webapp]$ 
+```
 
