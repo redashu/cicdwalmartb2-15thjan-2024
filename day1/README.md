@@ -295,3 +295,24 @@ Date:   Mon Jan 15 17:40:25 2024 +0000
 
     first working code in webapp
 ```
+
+### create a repo without init in github then follow command
+
+```
+[ashu@ci-sever webapp]$ git remote add origin https://github.com/redashu/hello-ashu-testwal.git
+[ashu@ci-sever webapp]$ git push -u origin master
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 743 bytes | 743.00 KiB/s, done.
+Total 7 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/redashu/hello-ashu-testwal.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+[ashu@ci-sever webapp]$ git branch 
+* (HEAD detached at 7ffd216)
+  master
+[ashu@ci-sever webapp]$ 
+```
