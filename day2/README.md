@@ -156,6 +156,20 @@ main  test
 
 ```
 
+### Creating directory structure from cli 
+
+```
+mvn archetype:generate  -DgroupId=com.example -DartifactId=ashujavaapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+===>>>
+ashu@ci-sever java]$ ls
+ashuappdemo  ashujavaapp
+[ashu@ci-sever java]$ ls ashujavaapp/
+pom.xml  src
+[ashu@ci-sever java]$ ls ashujavaapp/src/
+main  test
+```
+
 
 
 
