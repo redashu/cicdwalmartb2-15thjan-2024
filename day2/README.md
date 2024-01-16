@@ -224,6 +224,54 @@ Hello World!
 
 ```
 
+### in case of webapp it will create .war file under target directory 
+
+### incase you want to remove build outcome
+
+```
+[ashu@ci-sever ashuwebjava]$ mvn clean 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.ashu:ashuwebjava >------------------------
+[INFO] Building ashuwebjava Maven Webapp 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.1.0/maven-clean-plugin-3.1.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/3.1.0/maven-clean-plugin-3.1.0.pom (5.2 kB at 18 kB/s)
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ ashuwebjava ---
+[INFO] Deleting /home/ashu/ashu-pipelines/java/ashuwebjava/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.910 s
+[INFO] Finished at: 2024-01-16T18:30:08Z
+[INFO] ------------------------------------------------------------------------
+[ashu@ci-sever ashuwebjava]$ ls
+pom.xml  src
+```
+### we can deploy war file in apache tomcat 
+
+<img src="tomcat.png">
+
+### update env 
+
+```
+TOMCAT_HOME=/home/ashu/apache-tomcat-10.1.18-src
+PATH=$PATH:$MAVEN_CONFIG/bin:$TOMCAT_HOME/bin
+export PATH
+```
+
+### to start tomcat 
+
+```
+chmod 755 apache-tomcat-10.1.18-src/bin/ -R
+
+startup.sh
+
+===>>
+shutdown.sh
+```
 
 
 
