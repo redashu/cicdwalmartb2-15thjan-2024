@@ -137,6 +137,25 @@ PATH=$PATH:$MAVEN_CONFIG/bin
 export PATH
 ```
 
+### maven project is having particular structure 
+
+<img src="str.png">
+
+### showing directory structure 
+
+```
+[gjupalli@ci-sever gjupall-pipeline]$ ls
+java  my-tasks  python  scripts  webapp  webapp2
+[gjupalli@ci-sever gjupall-pipeline]$ ls  java/
+gj-demo
+[gjupalli@ci-sever gjupall-pipeline]$ ls  java/gj-demo/
+pom.xml  src
+[gjupalli@ci-sever gjupall-pipeline]$ ls  java/gj-demo/src/
+main  test
+[gjupalli@ci-sever gjupall-pipeline]$ 
+
+```
+
 
 
 
