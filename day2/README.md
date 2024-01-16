@@ -117,6 +117,27 @@ Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.10.205-195.804.amzn2.x86_64", arch: "amd64", family: "unix"
 ```
 
+### making env variable persistent 
+
+```
+[ashu@ci-sever apache-maven-3.9.6]$ cat  /home/ashu/.bashrc 
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+MAVEN_CONFIG=/home/ashu/apache-maven-3.9.6
+PATH=$PATH:$MAVEN_CONFIG/bin
+export PATH
+```
+
+
 
 
 
