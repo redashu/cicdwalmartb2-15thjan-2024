@@ -170,6 +170,60 @@ pom.xml  src
 main  test
 ```
 
+### Understanding few maven life cyle options 
+
+<img src="mvnlife.png">
+
+### -- mvn isntall for all the things these days
+
+```
+ashuappdemo  ashujavaapp
+[ashu@ci-sever java]$ cd  ashuappdemo/
+[ashu@ci-sever ashuappdemo]$ ls
+pom.xml  src
+[ashu@ci-sever ashuappdemo]$ mvn install 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.example:ashuappdemo >-----------------------
+[INFO] Building ashuappdemo 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.22.1/maven-surefire-plugin-2.22.1.pom
+Downloaded from central: https://repo.maven.apac
+
+
+==========>>>
+0-SNAPSHOT/ashuappdemo-1.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.117 s
+[INFO] Finished at: 2024-01-16T18:10:25Z
+[INFO] ------------------------------------------------------------------------
+[ashu@ci-sever ashuappdemo]$ ls
+pom.xml  src  target
+[ashu@ci-sever ashuappdemo]$ ls target/
+ashuappdemo-1.0-SNAPSHOT.jar  generated-sources       maven-archiver  surefire-reports
+classes                       generated-test-sources  maven-status    test-classes
+
+```
+
+### Now we can run 
+
+```
+ashu@ci-sever ashuappdemo]$ ls
+pom.xml  src  target
+[ashu@ci-sever ashuappdemo]$ ls target/
+ashuappdemo-1.0-SNAPSHOT.jar  generated-sources       maven-archiver  surefire-reports
+classes                       generated-test-sources  maven-status    test-classes
+[ashu@ci-sever ashuappdemo]$ 
+[ashu@ci-sever ashuappdemo]$ 
+[ashu@ci-sever ashuappdemo]$ java -cp target/ashuappdemo-1.0-SNAPSHOT.jar  com.example.App
+Hello World!
+[ashu@ci-sever ashuappdemo]$ 
+
+```
+
 
 
 
