@@ -80,5 +80,9 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/jenkins.service
 
 ### open UI and do post installation 
 
+### jenkins users
+
+<img src="users.png">
+
 
 
