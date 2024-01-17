@@ -1,0 +1,10 @@
+#git clone git@github.com:redashu/ashu-walm-mvnweb.git
+git checkout release 
+cp -rf /tmp/gjupall/target/*.war   .
+
+git add .
+git commit -m "updating war file"
+git push origin release 
+
+## clean tmp
+rm -rf /tmp/gjupall/
