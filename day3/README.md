@@ -14,3 +14,8 @@ pom.xml  src  target
 
 ```
 
+### INtroduction to CICD process
+
+<img src="cicd.png">
+
+
