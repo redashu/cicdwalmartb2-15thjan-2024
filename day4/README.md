@@ -73,3 +73,36 @@ pipeline {
 }
 
 ```
+
+### sample file 2
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('taking source code from git') {
+            steps {
+                echo 'pull code from github'
+                git branch: 'main', url: 'https://github.com/sivaa4232/mywebapp.git'
+                sh 'ls -ltr' 
+            }
+        }
+        // build stage
+        stage('we are going to build code') {
+            steps {
+                echo 'yes we are now building'
+            }
+        }
+        // pushing stage 
+        stage('pushing build release') {
+            steps {
+                echo 'we are now pushing articarts to github'
+            }
+        }
+    }
+}
+
+```
+
+
