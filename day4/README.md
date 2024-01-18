@@ -39,3 +39,8 @@ git commit -m "updating war file"
 git push https://redashu:password@github.com/redashu/ashu-walm-releaseb2.git
 
 ```
+
+### starting with scripting of pipelines using jenkins 
+
+<img src="jfile.png">
+
