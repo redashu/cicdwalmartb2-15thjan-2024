@@ -190,7 +190,7 @@ pipeline {
                         cp -rf  /tmp/newashudata/*.war  . 
                         git add .
                         git commit -m "updating war in release via jenkinsfile"
-                        git push https://redashu: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@github.com/redashu/ashu-walm-releaseb2.git
+                        git push https://redashu:password@github.com/redashu/ashu-walm-releaseb2.git
                     '''
                 }
                 
