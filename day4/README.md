@@ -44,3 +44,32 @@ git push https://redashu:password@github.com/redashu/ashu-walm-releaseb2.git
 
 <img src="jfile.png">
 
+
+### sample jenkinsfile demo 1 
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('taking source code from git') {
+            steps {
+                echo 'pull code from github'
+            }
+        }
+        // build stage
+        stage('we are going to build code') {
+            steps {
+                echo 'yes we are now building'
+            }
+        }
+        // pushing stage 
+        stage('pushing build release') {
+            steps {
+                echo 'we are now pushing articarts to github'
+            }
+        }
+    }
+}
+
+```
