@@ -145,5 +145,63 @@ pipeline {
 
 ```
 
+### jenkinsfile with all 3 stages
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('taking source code from git') {
+            steps {
+                echo 'pull code from github'
+                git 'https://github.com/redashu/ashu-walm-mvnweb.git'
+                sh 'ls -a'
+                
+            }
+        }
+        // build stage
+        stage('we are going to build code') {
+            steps {
+                echo 'yes we are now building'
+                sh '''
+                    source ~/.bashrc 
+                    mvn install 
+                    ls target 
+                    mkdir -p /tmp/newashudata/
+                    cp -rf target/*.war  /tmp/newashudata/
+                    mvn clean 
+                '''
+                
+            }
+        }
+        // pushing stage 
+        stage('pushing build release') {
+            steps {
+                echo 'we are now pushing articarts to github'
+                sh 'mkdir -p /tmp/ashu-relase'
+                // changing location to avoid git conflict
+                dir('/tmp/ashu-relase') {
+                    git branch:'master',url:'https://github.com/redashu/ashu-walm-releaseb2.git'
+                    sh ''' 
+                        ls -a 
+                        git branch -a
+                        git checkout release 
+                        cp -rf  /tmp/newashudata/*.war  . 
+                        git add .
+                        git commit -m "updating war in release via jenkinsfile"
+                        git push https://redashu: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@github.com/redashu/ashu-walm-releaseb2.git
+                    '''
+                }
+                
+            }
+        }
+    }
+}
+
+```
+
+
+
 
 
