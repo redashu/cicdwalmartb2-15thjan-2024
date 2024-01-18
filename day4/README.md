@@ -201,6 +201,10 @@ pipeline {
 
 ```
 
+### Deploy application using jenkins in 3 cases 
+
+<img src="deploy.png">
+
 
 
 
