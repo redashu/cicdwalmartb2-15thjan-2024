@@ -3,6 +3,25 @@
 ### job1 jenkins build step 
 
 ```
+whoami
+pwd
+echo "this job will be fetching all the source code"
+ls 
+### testing apache maven version 
+source ~/.bashrc 
+mvn --version 
+# build project
+mvn install 
+sleep 2
+# check war file
+ls target
+
+### checking branch
+mkdir  -p /tmp/ashunew/
+cp -rf target/*.war /tmp/ashunew/
+# cleaning build 
+mvn clean 
+
 
 ```
 
