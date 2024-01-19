@@ -30,3 +30,44 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service 
 chmod  777 /var/run/docker.sock 
 ```
 
+
+### jenkinsfile to build docker image
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('testing docker connect') {
+            steps {
+                echo 'Hello World'
+                sh 'docker version'
+            }
+        }
+        // fetching git code 
+        stage('taking git code and building it using docker') {
+            steps {
+                echo 'taking code'
+                git branch:'master',url:'https://github.com/redashu/html-sample-app.git'
+                sh 'ls'
+                /*
+                sh 'docker build -t walmashu:version1 . '
+                sh 'docker images '
+                */
+                // using jenkins pipeline method 
+                script {
+                    def imageName = "ashutoshhwalmart"
+                    def imageTag = "version1"
+                    docker.build(imageName + ":" + imageTag, "-f Dockerfile .")
+                }
+                // verify image
+                sh 'docker images '
+                
+            }
+        }
+    }
+}
+
+```
+
+
