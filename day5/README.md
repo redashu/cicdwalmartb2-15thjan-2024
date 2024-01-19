@@ -187,3 +187,8 @@ pipeline {
 
 ```
 
+
+### image deploy options 
+
+<img src="imgd.png">
+
