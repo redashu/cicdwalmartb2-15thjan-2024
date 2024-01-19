@@ -192,3 +192,97 @@ pipeline {
 
 <img src="imgd.png">
 
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('testing docker connect') {
+            steps {
+                echo 'Hello World'
+                sh 'docker version'
+            }
+        }
+        // fetching git code 
+        stage('taking git code and building it using docker') {
+            steps {
+                echo 'taking code'
+                git branch:'master',url:'https://github.com/redashu/html-sample-app.git'
+                sh 'ls'
+                /*
+                sh 'docker build -t walmashu:version1 . '
+                sh 'docker images '
+                */
+                // using jenkins pipeline method 
+                script {
+                    def imageName = "dockerashu/ashutoshhwalmart"
+                    def imageTag = "version$BUILD_NUMBER"
+                    docker.build(imageName + ":" + imageTag, "-f Dockerfile .")
+                }
+                // verify image
+                sh 'docker images '
+                
+            }
+        }
+        // doing scan
+        stage('scan'){
+            steps {
+                echo 'doing scan'
+                sh '''
+                trivy image  dockerashu/ashutoshhwalmart:version$BUILD_NUMBER | grep -i criti >/tmp/bug.txt
+                count=`cat /tmp/bug.txt | wc -l`
+                if [ $count -gt 0 ]
+                then 
+                    echo 'got error '
+                    exit 1
+                fi 
+                '''
+            }
+        }
+        // creating container from above build image 
+        stage('creating container'){
+            steps {
+                echo 'creating container'
+                sh 'docker rm ashuc1 -f &>/dev/null'
+                sh 'docker run -d --name ashuc1 -p 1234:80 dockerashu/ashutoshhwalmart:version$BUILD_NUMBER'
+            }
+        
+            
+        }
+        // pushing image to docker hub 
+        stage('pushing image to docker hub'){
+            steps {
+                echo 'pushing image'
+                script {
+                    def imageName = "dockerashu/ashutoshhwalmart"
+                    def imageTag = "version$BUILD_NUMBER"
+                    def ashuCred = "3a475b3c-c8f7-4237-b396-4d3172fe1e88"
+                    docker.withRegistry('https://registry.hub.docker.com',ashuCred){
+                        docker.image(imageName + ":" + imageTag).push()
+                    }
+                }
+            }
+        }
+    }
+    // post action 
+    post {
+        success {
+            echo 'we got it running all the stages'
+            mail bcc: '', body: '''so we did it and every build got it running
+more info you can check in jenkins portal ''', cc: 'abnethaji@gmail.com', from: '', replyTo: '', subject: 'congratulations all build is up', to: 'vijay.dadhich09@gmail.com'
+        }
+        failure {
+            echo 'please check jenkins logs section'
+        }
+        always {
+            echo 'free cache memory to improve performance'
+            sleep 5
+            // sh ' echo 3 >/proc/sys/vm/drop_caches '
+        }
+    }
+}
+
+```
+
+
+
