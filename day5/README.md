@@ -75,3 +75,53 @@ pipeline {
 
 <img src="dp.png">
 
+### jenkisnfile with docker --- create container 
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('testing docker connect') {
+            steps {
+                echo 'Hello World'
+                sh 'docker version'
+            }
+        }
+        // fetching git code 
+        stage('taking git code and building it using docker') {
+            steps {
+                echo 'taking code'
+                git branch:'master',url:'https://github.com/redashu/html-sample-app.git'
+                sh 'ls'
+                /*
+                sh 'docker build -t walmashu:version1 . '
+                sh 'docker images '
+                */
+                // using jenkins pipeline method 
+                script {
+                    def imageName = "ashutoshhwalmart"
+                    def imageTag = "version$BUILD_NUMBER"
+                    docker.build(imageName + ":" + imageTag, "-f Dockerfile .")
+                }
+                // verify image
+                sh 'docker images '
+                
+            }
+        }
+        // creating container from above build image 
+        stage('creating container'){
+            steps {
+                echo 'creating container'
+                sh 'docker rm ashuc1 -f &>/dev/null'
+                sh 'docker run -d --name ashuc1 -p 1234:80 ashutoshhwalmart:version$BUILD_NUMBER'
+            }
+        
+            
+        }
+    }
+}
+
+```
+
+
