@@ -57,7 +57,7 @@ pipeline {
                 // using jenkins pipeline method 
                 script {
                     def imageName = "ashutoshhwalmart"
-                    def imageTag = "version1"
+                    def imageTag = "version$BUILD_NUMBER"
                     docker.build(imageName + ":" + imageTag, "-f Dockerfile .")
                 }
                 // verify image
@@ -70,4 +70,8 @@ pipeline {
 
 ```
 
+
+### docker port forward
+
+<img src="dp.png">
 
